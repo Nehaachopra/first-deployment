@@ -23,13 +23,10 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             . "$NVM_DIR/nvm.sh"
 
-            export PNPM_HOME="$HOME/.local/share/pnpm"
-            export PATH="$PNPM_HOME:$PATH"
-
             cd /home/ubuntu/first-deployment
 
             git pull
             pnpm install
 
-            pm2 restart 0
+            /home/ubuntu/.local/share/pnpm/bin/pm2 restart 0
             

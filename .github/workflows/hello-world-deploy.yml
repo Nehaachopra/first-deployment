@@ -37,13 +37,24 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            export NVM_DIR="$HOME/.nvm"
-            . "$NVM_DIR/nvm.sh"
+            # export NVM_DIR="$HOME/.nvm"
+            # . "$NVM_DIR/nvm.sh"
 
-            cd /home/ubuntu/first-deployment
+            # cd /home/ubuntu/first-deployment
 
-            git pull
-            pnpm install
+            # git pull
+            # pnpm install
 
-            /home/ubuntu/.local/share/pnpm/bin/pm2 restart 0
-            
+            # /home/ubuntu/.local/share/pnpm/bin/pm2 restart 0
+
+            # kill the docker container
+            docker rm -f hello-world || true  
+
+            # pull the updated image
+            docker pull nehaachopra/hello-world
+
+            # run docker container
+            docker run -d -p 3000:3000 nehaachopra/hello-world
+
+            # cllean up olld / unused images
+            socker image prune -f

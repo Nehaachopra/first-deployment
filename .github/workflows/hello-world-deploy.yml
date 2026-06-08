@@ -57,4 +57,4 @@ jobs:
             docker run -d -p 3000:3000 nehaachopra/hello-world
 
             # cllean up olld / unused images
-            socker image prune -f
+            docker image prune -f

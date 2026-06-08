@@ -1,0 +1,26 @@
+name: Deploy node js code on excloud
+
+on: 
+  push:
+    branches: 
+      - main
+
+jobs: 
+  deploy: 
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy on ExCloud server
+        uses: appleboy/ssh-action@v1.2.2
+        with: 
+          host: 210.79.129.91
+          username: ubuntu
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            cd /home/ubuntu/first-deployment
+            git pull
+            pnpm install
+            pm2 restart 0

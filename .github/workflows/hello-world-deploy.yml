@@ -16,7 +16,7 @@ jobs:
       - name: Deploy on ExCloud server
         uses: appleboy/ssh-action@v1.2.2
         with: 
-          host: 210.79.129.31
+          host: 210.79.129.91
           username: ubuntu
           key: ${{ secrets.PRIVATE_KEY }}
           script: |

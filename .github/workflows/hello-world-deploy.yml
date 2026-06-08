@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: 
+      - name: Check secret length
+        run: |
+          echo "Length: ${#KEY}"
+        env:
+          KEY: ${{ secrets.PRIVATE_KEY }}
+          
       - name: Checkout code
         uses: actions/checkout@v4
 

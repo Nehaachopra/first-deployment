@@ -47,41 +47,17 @@ jobs:
 
             # /home/ubuntu/.local/share/pnpm/bin/pm2 restart 0
 
-            # Before deployment
-            echo "=== BEFORE ==="
-            sudo docker ps -a
-            sudo docker images
+            # kill the docker container
+            sudo docker rm -f hello-world || true  
 
-            # Remove old container
-            echo "=== REMOVING CONTAINER ==="
-            sudo docker rm -f hello-world || true
-
-            echo "=== AFTER REMOVE ==="
-            sudo docker ps -a
-
-            # Pull image
-            echo "=== PULLING IMAGE ==="
+            # pull the updated image
             sudo docker pull nehaachopra/hello-world
 
-            # Show image info
-            echo "=== IMAGE INFO ==="
-            sudo docker images nehaachopra/hello-world
-
-            # Start container
-            echo "=== STARTING CONTAINER ==="
+            # run docker container
             sudo docker run -d \
               --name hello-world \
               -p 3000:3000 \
               nehaachopra/hello-world
 
-            # Verify container
-            echo "=== RUNNING CONTAINERS ==="
-            sudo docker ps -a
-
-            # Show logs
-            echo "=== CONTAINER LOGS ==="
-            sudo docker logs hello-world || true
-
-            # Cleanup
-            echo "=== CLEANUP ==="
+            # cllean up olld / unused images
             sudo docker image prune -f

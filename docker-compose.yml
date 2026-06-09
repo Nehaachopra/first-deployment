@@ -1,0 +1,17 @@
+services:
+  nodejs-server:
+    image: nehaachopra/hello-world
+    deploy:
+      replicas: 5
+    networks: 
+      - hello-world-internal
+  caddy:
+    image: caddy:latest
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    networks:
+      - hello-world-internal
+
+networks:
+  hello-world-internal:
+    driver: bridge

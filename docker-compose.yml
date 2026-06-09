@@ -11,6 +11,8 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
     networks:
       - hello-world-internal
+    ports:
+      - "80:80"
 
 networks:
   hello-world-internal:

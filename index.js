@@ -7,7 +7,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/health", (req, res) => {
-  res.send("OK");
+  res.send("Server is healthy!");
 });
 
 app.use("not-found", (req, res) => {

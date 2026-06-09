@@ -48,13 +48,13 @@ jobs:
             # /home/ubuntu/.local/share/pnpm/bin/pm2 restart 0
 
             # kill the docker container
-            docker rm -f hello-world || true  
+            sudo docker rm -f hello-world || true  
 
             # pull the updated image
-            docker pull nehaachopra/hello-world
+            sudo docker pull nehaachopra/hello-world
 
             # run docker container
-            docker run -d -p 3000:3000 nehaachopra/hello-world
+            sudo docker run -d -p 3000:3000 nehaachopra/hello-world
 
             # cllean up olld / unused images
-            docker image prune -f
+            sudo docker image prune -f

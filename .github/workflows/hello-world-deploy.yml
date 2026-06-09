@@ -63,7 +63,7 @@ jobs:
             # sudo docker image prune -f
 
             cd /home/ubuntu/first-deployment
-            git pull 
+            git pull origin main
             sudo docker compose pull
             sudo docker compose down
             sudo docker compose up -d
